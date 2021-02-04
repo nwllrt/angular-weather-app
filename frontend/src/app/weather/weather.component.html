@@ -1,0 +1,29 @@
+<div class="weather-component">
+  <div class="wrapper">
+    <p class="error-message" *ngIf="showErrorMessage">{{error}}</p>
+    <div class="input-wrapper">
+      <mat-form-field (click)="showErrorMessage = false">
+        <mat-label>Ortseingabe</mat-label>
+        <input [(ngModel)]="inputLocation" matInput placeholder="z.B. Berlin">
+      </mat-form-field>
+      <button mat-icon-button (click)="onGetWeatherData()" [disabled]="!inputLocation">
+        <mat-icon>send</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="data-wrapper" *ngIf="weather">
+    <p class="data-name">{{weather.name + ', ' + weather.sys.country}}</p>
+    <!--alt="{{weather.weather[0].description}}"-->
+    <img width="100px" height="100px" src="http://openweathermap.org/img/wn/{{weather.weather[0].icon}}@2x.png">
+    <p class="data-temperature">{{weather.main.temp + '° C'}}</p>
+    <button mat-raised-button (click)="onAddLocation()" class="mdc-button mdc-button--raised"
+            [disabled]="!isAddToLocationsActive">
+      {{isAddToLocationsActive
+      ? weather.name + ' zu Favoriten hinzufügen'
+      : 'Ort wurde bereits zu Favoriten hinzugefügt'}}
+    </button>
+  </div>
+  <div class="data-wrapper" *ngIf="!weather && error">
+    <p class="data-name">:(</p>
+  </div>
+</div>

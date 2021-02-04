@@ -1,0 +1,29 @@
+<div class="locations-component">
+  <h1>Favoriten</h1>
+  <div class="sort-menu">
+    <mat-menu #appMenu="matMenu">
+      <button mat-menu-item (click)="onSort(SortType.DateAscending)">{{SortType.DateAscending}}</button>
+      <button mat-menu-item (click)="onSort(SortType.DateDescending)">{{SortType.DateDescending}}</button>
+      <button mat-menu-item (click)="onSort(SortType.LocationAscending)">{{SortType.LocationAscending}}</button>
+      <button mat-menu-item (click)="onSort(SortType.LocationDescending)">{{SortType.LocationDescending}}</button>
+    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="appMenu">{{sortType}}</button>
+  </div>
+  <div class="list-wrapper">
+    <mat-action-list>
+      <ngx-simplebar>
+        <mat-list-item matLine *ngFor="let location of locations; let i = index;"
+                       (click)="onLocationClicked(i, location)"
+                       [ngClass]="{'highlight': selectedIndex === i}">
+          <a matLine class="location-text">{{location.location}}</a>
+          <a matLine>{{getDate(location.timestamp)}}</a>
+          <button mat-icon-button class="delete-button" (click)="onDeleteLocation(location, $event)">
+            <mat-icon>clear</mat-icon>
+          </button>
+          <mat-divider [inset]="true"
+                       *ngIf="i !== locations.length - 1 && i !== selectedIndex - 1 && i !== selectedIndex"></mat-divider>
+        </mat-list-item>
+      </ngx-simplebar>
+    </mat-action-list>
+  </div>
+</div>

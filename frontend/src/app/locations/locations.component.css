@@ -1,0 +1,39 @@
+.locations-component {
+  position: relative;
+  height: 100vh;
+}
+
+.locations-component h1 {
+  text-align: center;
+  padding-top: 4vh;
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+.sort-menu {
+  padding-top: 2vh;
+  text-align: center;
+}
+
+.delete-button:hover {
+  color: red;
+}
+
+.list-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.locations-component ngx-simplebar {
+  height: 80vh;
+}
+
+.highlight {
+  background-color: rgba(25, 118, 210, 0.2);
+}
+
+.location-text {
+  font-weight: 500 !important;
+}

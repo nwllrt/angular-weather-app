@@ -1,0 +1,18 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav class="sidenav" opened mode="side">
+    <app-locations></app-locations>
+  </mat-sidenav>
+
+  <svg width="80" height="80">
+    <a class="button" (click)="sidenav.toggle(); isSidenavShown = !isSidenavShown">
+      <svg viewBox="0 0 24 24">
+        <path fill="white" d="M0 0 H24 A24 24, 0, 0 1, 0 24 V0 0"/>
+      </svg>
+      <svg x="12" y="16" viewBox="0 0 24 24" width="32px" height="32px" fill="black">
+        <path *ngIf="isSidenavShown" d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+        <path *ngIf="!isSidenavShown" transform="rotate(180 12 12)" d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+      </svg>
+    </a>
+  </svg>
+  <app-weather></app-weather>
+</mat-sidenav-container>
