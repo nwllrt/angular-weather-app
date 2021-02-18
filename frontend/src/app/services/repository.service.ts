@@ -60,7 +60,7 @@ export class RepositoryService {
       this.locations = this.locations.filter(loc => loc.id !== location.id);
       this.locationsSubject.next(this.locations);
       if (this.weather !== undefined && this.weather.id === location.id) {
-        this.selectedLocation = undefined;
+        this.selectedLocation.next(undefined);
         this.addToLocationsButtonState.next(true);
       }
     });

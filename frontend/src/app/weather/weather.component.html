@@ -4,7 +4,7 @@
     <div class="input-wrapper">
       <mat-form-field (click)="showErrorMessage = false">
         <mat-label>Ortseingabe</mat-label>
-        <input [(ngModel)]="inputLocation" matInput placeholder="z.B. Berlin">
+        <input [(ngModel)]="inputLocation" matInput placeholder="z.B. Berlin" (keyup.enter)="onGetWeatherData()">
       </mat-form-field>
       <button mat-icon-button (click)="onGetWeatherData()" [disabled]="!inputLocation">
         <mat-icon>send</mat-icon>
